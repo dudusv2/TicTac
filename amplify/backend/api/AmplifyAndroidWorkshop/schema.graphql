@@ -1,0 +1,14 @@
+type Pet @model {
+  id: ID!
+  name: String!
+  description: String
+}
+type Game @model {
+  id: ID!
+  name: String!
+  player1: String
+  player2: String
+  description: String
+  board: [String]
+  active: Boolean
+}
