@@ -49,8 +49,6 @@ public class List extends AppCompatActivity {
                     Score post = postSnapshot.getValue(Score.class);
                     String myChildValues = post.getScore();
 
-
-
                     if (pairs.containsKey(post.getPlayer1()) )
                         pairs.put(post.getPlayer1(), pairs.get(post.getPlayer1()) + post.getScore1());
                     else
@@ -63,9 +61,7 @@ public class List extends AppCompatActivity {
                     myArrayList.add(myChildValues);
                     myActiveGames.add(post);
                     myArrayAdapter.notifyDataSetChanged();
-                    
                 }
-
                 for (String i : pairs.keySet()) {
                     myArrayList2.add(i + " Wynik: " + pairs.get(i));
                     myArrayAdapter.notifyDataSetChanged();
