@@ -15,16 +15,19 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class List extends AppCompatActivity {
 
     DatabaseReference reff;
     ListView myListView;
     ArrayList<String> myArrayList = new ArrayList<>();
+    ArrayList<String> myArrayList2 = new ArrayList<>();
     ArrayList<Score> myActiveGames = new ArrayList<>();
     ArrayAdapter<String> myArrayAdapter;
     private ValueEventListener listener;
-
+    Map<String, Integer> pairs = new HashMap<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,27 +35,10 @@ public class List extends AppCompatActivity {
 
         myListView = findViewById(R.id.ListView);
         reff = FirebaseDatabase.getInstance().getReference().child(MainActivity.user);
-        myArrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, myArrayList);
+        myArrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, myArrayList2);
         myListView.setAdapter(myArrayAdapter);
         myListView.setClickable(true);
-//        myListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//                Object o = myListView.getItemAtPosition(position);
-//                myActiveGames.get(position).setActive(false);
-//                myActiveGames.get(position).setPlayer2(MainActivity.user);
-//                myActiveGames.get(position).setTurn(new Random().nextBoolean());
-//                myActiveGames.get(position).setPlayers(true);
-//                reff.child(myActiveGames.get(position).getName()).setValue(myActiveGames.get(position));
-//
-//                Intent newActivity = new Intent(Multiplayer.this, NewActivity.class);
-//                newActivity.putExtra("id", myActiveGames.get(position).getName());
-//                newActivity.putExtra("multiplayer", true);
-//                List.this.startActivity(newActivity);
-//                finish();
-//
-//            }
-//        });
+
         listener = reff.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot snapshot) {
@@ -62,10 +48,29 @@ public class List extends AppCompatActivity {
                     Log.e("Multiplayer", postSnapshot.toString());
                     Score post = postSnapshot.getValue(Score.class);
                     String myChildValues = post.getScore();
+
+
+
+                    if (pairs.containsKey(post.getPlayer1()) )
+                        pairs.put(post.getPlayer1(), pairs.get(post.getPlayer1()) + post.getScore1());
+                    else
+                        pairs.put(post.getPlayer1(),post.getScore1());
+                    if (pairs.containsKey(post.getPlayer2()) )
+                        pairs.put(post.getPlayer2(), pairs.get(post.getPlayer2()) + post.getScore2());
+                    else
+                        pairs.put(post.getPlayer2(),post.getScore2());
+
                     myArrayList.add(myChildValues);
                     myActiveGames.add(post);
                     myArrayAdapter.notifyDataSetChanged();
+                    
                 }
+
+                for (String i : pairs.keySet()) {
+                    myArrayList2.add(i + " Wynik: " + pairs.get(i));
+                    myArrayAdapter.notifyDataSetChanged();
+                }
+
             }
 
             @Override
@@ -73,16 +78,8 @@ public class List extends AppCompatActivity {
             }
         });
 
-//        FloatingActionButton btnAddGame = findViewById(R.id.btn_addGame);
-//        btnAddGame.setOnClickListener(new View.OnClickListener() {
-//
-//            @Override
-//            public void onClick(View view) {
-//                Intent addGameIntent = new Intent(List.this, AddGameActivity.class);
-//                List.this.startActivity(addGameIntent);
-//                finish();
-//            }
-//        });
     }
+
+
 
 }

@@ -36,7 +36,6 @@ class NewActivity : AppCompatActivity() {
     private var gameName: String = ""
     private var reff: DatabaseReference? = null
     private lateinit var post: Game
-    private var gameOn:Boolean = true
     lateinit var addValueEventListener:ValueEventListener
     private lateinit var context:Context
     private lateinit var buttonReset:Button

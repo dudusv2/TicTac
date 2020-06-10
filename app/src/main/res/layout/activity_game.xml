@@ -5,11 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/backgrounds"
     tools:context=".GameActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:background="@color/backgrounds"
         android:layout_weight="2">
 
         <TextView
@@ -21,7 +23,7 @@
             android:gravity="center"
             android:freezesText="true"
             android:text="@string/player_1"
-            android:textSize="30sp" />
+            android:textSize="28sp" />
 
         <TextView
             android:id="@+id/text_view_p2"
@@ -33,15 +35,16 @@
             android:layout_weight="2"
             android:freezesText="true"
             android:text="@string/player_2"
-            android:textSize="30sp" />
+            android:textSize="28sp" />
 
         <Button
             android:id="@+id/button_reset"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:background="@drawable/button_reset"
             android:layout_weight="2"
-            android:text="@string/reset" />
+            android:background="@drawable/button_reset"
+            android:text="@string/reset"
+            android:textSize="38sp" />
 
     </LinearLayout>
 

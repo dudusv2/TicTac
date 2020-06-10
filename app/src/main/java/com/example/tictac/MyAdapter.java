@@ -71,4 +71,5 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
             txt_description = itemView.findViewById(R.id.txt_description);
         }
     }
+
 }

@@ -6,6 +6,7 @@ import android.os.Bundle
 
 import android.annotation.SuppressLint
 import android.os.PersistableBundle
+import android.util.Log
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
@@ -33,12 +34,23 @@ class NewActivity2 : AppCompatActivity() {
         tvp1 = findViewById(R.id.text_view_p1)
         tvp2 = findViewById(R.id.text_view_p2)
         supportActionBar!!.hide()
-        turn = savedInstanceState?.getBoolean("turn") ?: true
+        turn = savedInstanceState?.getBoolean("turn") ?: turn
+        p1Score = savedInstanceState?.getInt("p1Score") ?:  p1Score
+        p2Score = savedInstanceState?.getInt("p2Score") ?: p2Score
+        roundCount = savedInstanceState?.getInt("roundCount") ?: 0
+
         switchTurn()
         for (x in 0..99) {
             val btn = "button_$x"
             val resID = resources.getIdentifier(btn, "id", packageName)
+            var jol= savedInstanceState?.getCharSequence("c$x")
             buttons[x] = findViewById(resID)
+            if (jol == "X")
+                buttons[x]!!.isActivated = true
+            else if (jol == "O") {
+               buttons[x]!!.isEnabled = false
+            }
+
             buttons[x]!!.setOnClickListener {
                 if ((buttons[x] as Button).text.toString() != "") return@setOnClickListener
                 if (turn) {
@@ -66,6 +78,7 @@ class NewActivity2 : AppCompatActivity() {
         }
         val buttonReset = findViewById<Button>(R.id.button_reset)
         buttonReset.setOnClickListener {
+            finish()
             resetGame()
         }
     }
@@ -232,8 +245,14 @@ class NewActivity2 : AppCompatActivity() {
         resetBoard()
     }
 
-    override fun onSaveInstanceState(outState: Bundle?, outPersistentState: PersistableBundle?) {
-        super.onSaveInstanceState(outState, outPersistentState)
-        outState!!.putBoolean("turn", turn)
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putBoolean("turn", !turn)
+        outState.putInt("count",roundCount)
+        outState.putInt("p1Score",p1Score)
+        outState.putInt("p2Score",p2Score)
+        for (x in 0..99) {
+            outState.putCharSequence("c$x",  buttons[x]?.text)
+        }
     }
 }

@@ -21,33 +21,32 @@
 
 <!--</androidx.coordinatorlayout.widget.CoordinatorLayout>-->
 
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".MainActivity"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/backgrounds"
     android:orientation="vertical"
-    >
+    tools:context=".MainActivity">
 
     <TextView
         android:id="@+id/player"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginStart="8dp"
+
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         android:layout_weight="5"
+        android:fontFamily="@font/bangers"
+        android:gravity="center"
         android:text="@string/name"
         android:textAlignment="center"
-        android:gravity="center"
         android:textAllCaps="false"
         android:textColor="@color/colorAccent"
-        android:textSize="50sp"
-        android:textStyle="bold"
-        />
+        android:textSize="84sp"
+        android:textStyle="bold" />
 
     <!--    <Switch-->
     <!--        android:id="@+id/switch1"-->
@@ -70,32 +69,34 @@
         android:layout_height="0dp"
         android:layout_weight="5"
         android:background="@drawable/button_main"
+        android:shadowColor="@color/backgrounds"
         android:text="@string/multiplayer"
         android:textSize="36sp" />
 
     <Button
         android:id="@+id/btn_2"
-        android:background="@drawable/button_main"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="5"
+        android:background="@drawable/button_main"
         android:text="@string/hotseat"
         android:textSize="36sp" />
+
     <Button
         android:id="@+id/btn_3"
         android:layout_width="match_parent"
-        android:background="@drawable/button_main"
         android:layout_height="0dp"
         android:layout_weight="5"
+        android:background="@drawable/button_main"
         android:text="@string/score"
         android:textSize="36sp" />
 
     <Button
         android:id="@+id/btn_4"
         android:layout_width="match_parent"
-        android:background="@drawable/button_main"
         android:layout_height="0dp"
         android:layout_weight="5"
+        android:background="@drawable/button_main"
         android:text="@string/exit"
         android:textSize="36sp" />
 </LinearLayout>

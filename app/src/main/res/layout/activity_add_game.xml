@@ -1,42 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/backgrounds"
+    android:orientation="vertical"
+    android:gravity="center"
     tools:context=".AddGameActivity">
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<!--    <LinearLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:layout_margin="15dp"-->
+<!--        android:background="@color/backgrounds"-->
+<!--        android:orientation="vertical"-->
+<!--        android:paddingTop="240dp"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent">-->
+
+    <TextView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:layout_margin="15dp">
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:fontFamily="@font/bangers"
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Name"
-            android:textSize="15sp"
-            />
-        <EditText
-            android:id="@+id/editTxt_name"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-<!--        <TextView-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:text="Description"-->
-<!--            android:textSize="15sp" />-->
-<!--        <EditText-->
-<!--            android:id="@+id/editText_description"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content" />-->
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/btn_save"
-            android:layout_marginTop="15dp"
-            android:text="Add game"/>
-    </LinearLayout>
+        android:gravity="center"
+        android:text="@string/nazwa_gry"
+        android:textSize="46sp" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <EditText
+        android:id="@+id/editTxt_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="34sp" />
+        <!--        <TextView-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:text="Description"-->
+        <!--            android:textSize="15sp" />-->
+        <!--        <EditText-->
+        <!--            android:id="@+id/editText_description"-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="wrap_content" />-->
+    <Button
+        android:id="@+id/btn_save"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_gravity="center"
+        android:layout_marginTop="15dp"
+        android:text="@string/dodaj"
+        android:textSize="34sp" />
+<!--    </LinearLayout>-->
+
+</LinearLayout>

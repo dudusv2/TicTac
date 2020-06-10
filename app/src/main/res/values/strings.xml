@@ -11,12 +11,14 @@
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
 
 
-    <string name="name">Kółko Krzyżyk</string>
+    <string name="name">Tic Tac Toe</string>
     <string name="multiplayer">Nowa gra wieloosobowa</string>
     <string name="hotseat">Nowa gra hotseat</string>
     <string name="score">Tablica wyników</string>
     <string name="exit">Wyjście z gry</string>
-    <string name="player_1">Player 1: 0</string>
-    <string name="player_2">Player 2: 0</string>
-    <string name="reset">reset</string>
+    <string name="player_1">Gracz 1: 0</string>
+    <string name="player_2">Gracz 2: 0</string>
+    <string name="reset">Wyjdź</string>
+    <string name="dodaj">Dodaj!</string>
+    <string name="nazwa_gry">Nazwa gry</string>
 </resources>
